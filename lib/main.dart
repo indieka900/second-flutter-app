@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'pages/login.dart';
+import 'pages/register.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        backgroundColor: Colors.brown,
       ),
       home: const WelcomePage(),
     );
@@ -47,55 +49,70 @@ class _WelcomePageState extends State<WelcomePage> {
               const SizedBox(
                 height: 60.0,
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.brown[600]),
-                onPressed: () {
-                  setState(() {
-                    if (currentPath == imagePath1) {
-                      currentPath = imagePath2;
-                    } else {
-                      currentPath = imagePath1;
-                    }
-                  });
-                },
-                child: const Text("CLick"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.brown[600]),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) {
+                          return const Register();
+                        }),
+                      );
+                      // setState(() {
+                      //   if (currentPath == imagePath1) {
+                      //     currentPath = imagePath2;
+                      //   } else {
+                      //     currentPath = imagePath1;
+                      //   }
+                      // });
+                    },
+                    child: const Text("Register"),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.indigo[600]),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) {
+                          return const Nextpage();
+                        }),
+                      );
+                      // setState(() {
+                      //   currentNumbeOfimage++;
+                      // });
+                    },
+                    child: const Text("Login"),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 20,
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.indigo[600]),
-                onPressed: () {
-                  setState(() {
-                    currentNumbeOfimage++;
-                  });
-                },
-                child: const Text("Add image"),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red[600],
-                ),
-                onPressed: () {
-                  setState(() {
-                    if (currentNumbeOfimage > 2) {
-                      currentNumbeOfimage--;
-                    } else {
-                      currentNumbeOfimage = 2;
-                      const Text("There is no image to remove");
-                    }
-                  });
-                },
-                child: const Text("Remove image"),
-              ),
+              // ElevatedButton(
+              //   style: ElevatedButton.styleFrom(
+              //     backgroundColor: Colors.red[600],
+              //   ),
+              //   onPressed: () {
+              //     // setState(() {
+              //     //   if (currentNumbeOfimage > 1) {
+              //     //     currentNumbeOfimage--;
+              //     //   } else {
+              //     //     currentNumbeOfimage = 1;
+              //     //   }
+              //     // });
+              //   },
+              //   child: const Text("Remove image"),
+              // ),
               const SizedBox(
                 height: 45,
               ),
+
               //Image.asset(currentPath),
               //Image.asset('images/welcome2.png'),
               Column(
