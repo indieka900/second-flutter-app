@@ -31,6 +31,7 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
+  int currentNumbeOfimage = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,32 +40,70 @@ class _WelcomePageState extends State<WelcomePage> {
         centerTitle: true,
         backgroundColor: Colors.teal[600],
       ),
-      body: Center(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 60.0,
-            ),
-            Image.asset(currentPath),
-            const SizedBox(
-              height: 45,
-            ),
-            ElevatedButton(
-              style:
-                  ElevatedButton.styleFrom(backgroundColor: Colors.brown[600]),
-              onPressed: () {
-                setState(() {
-                  if (currentPath == imagePath1) {
-                    currentPath = imagePath2;
-                  } else {
-                    currentPath = imagePath1;
-                  }
-                });
-              },
-              child: const Text("CLick"),
-            ),
-            //Image.asset('images/welcome2.png'),
-          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 60.0,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.brown[600]),
+                onPressed: () {
+                  setState(() {
+                    if (currentPath == imagePath1) {
+                      currentPath = imagePath2;
+                    } else {
+                      currentPath = imagePath1;
+                    }
+                  });
+                },
+                child: const Text("CLick"),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.indigo[600]),
+                onPressed: () {
+                  setState(() {
+                    currentNumbeOfimage++;
+                  });
+                },
+                child: const Text("Add image"),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red[600],
+                ),
+                onPressed: () {
+                  setState(() {
+                    if (currentNumbeOfimage > 2) {
+                      currentNumbeOfimage--;
+                    } else {
+                      currentNumbeOfimage = 2;
+                      const Text("There is no image to remove");
+                    }
+                  });
+                },
+                child: const Text("Remove image"),
+              ),
+              const SizedBox(
+                height: 45,
+              ),
+              //Image.asset(currentPath),
+              //Image.asset('images/welcome2.png'),
+              Column(
+                children: List.generate(
+                    currentNumbeOfimage, (index) => Image.asset(currentPath)),
+              ),
+            ],
+          ),
         ),
       ),
     );
