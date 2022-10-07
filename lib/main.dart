@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-String imagePath1 = 'images/welcome2.png';
-String imagePath2 = 'images/welcome.png';
+// String imagePath1 = 'images/welcome2.png';
+// String imagePath2 = 'images/welcome.png';
 String currentPath = 'images/whallpaper2.png';
 
 class WelcomePage extends StatefulWidget {

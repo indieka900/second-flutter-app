@@ -13,6 +13,18 @@ class Nextpage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 196, 150, 13),
       ),
+      body: const Center(
+        child: AboutListTile(
+          icon: Icon(Icons.info),
+          applicationIcon: FlutterLogo(),
+          applicationLegalese: 'Legalese',
+          applicationName: 'Joseph\'s Flutter App',
+          applicationVersion: 'version1.0.5',
+          aboutBoxChildren: [
+            Text("Joseph Indieka"),
+          ],
+        ),
+      ),
     );
   }
 }
