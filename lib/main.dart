@@ -14,23 +14,38 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: const WlecomePage(),
+      home: const WelcomePage(),
     );
   }
 }
 
-class WlecomePage extends StatelessWidget {
-  const WlecomePage({super.key});
+
+
+class WelcomePage extends StatelessWidget {
+  const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Hello this is My homepage"),
+        title: const Text("Welcome to our homepage"),
         centerTitle: true,
-        backgroundColor: Colors.green[500],
+        backgroundColor: Colors.teal[600],
       ),
-      body: Image.asset('images/welcome.png'),
+      body: Center(
+        child: Column(
+          children: [
+            ElevatedButton(
+              style:
+                  ElevatedButton.styleFrom(backgroundColor: Colors.brown[600]),
+              onPressed: () {},
+              child: const Text("CLick"),
+            ),
+            Image.asset('images/welcome2.png'),
+            //Image.asset('images/welcome2.png'),
+          ],
+        ),
+      ),
     );
   }
 }
