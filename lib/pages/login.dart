@@ -1,5 +1,5 @@
 //import 'dart:html';
-
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 
 class Nextpage extends StatelessWidget {
@@ -9,6 +9,11 @@ class Nextpage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: Color.fromARGB(188, 189, 42, 98),
+          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.light,
+        ),
         title: const Text(
           "Login Page",
           style: TextStyle(

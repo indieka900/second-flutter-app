@@ -40,7 +40,7 @@ class _WelcomePageState extends State<WelcomePage> {
     return Scaffold(
       appBar: AppBar(
         systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.greenAccent,
+          statusBarColor: Color.fromARGB(255, 51, 78, 2),
           statusBarIconBrightness: Brightness.dark,
           statusBarBrightness: Brightness.light,
         ),
