@@ -82,7 +82,11 @@ class _WelcomePageState extends State<WelcomePage> {
                   children: [
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.brown[600]),
+                        backgroundColor: Colors.brown[600],
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        ),
+                      ),
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) {
@@ -105,6 +109,9 @@ class _WelcomePageState extends State<WelcomePage> {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.indigo[600],
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(20.0),
+                        ),
                       ),
                       onPressed: () {
                         Navigator.of(context).push(
@@ -136,6 +143,9 @@ class _WelcomePageState extends State<WelcomePage> {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromARGB(255, 10, 139, 122),
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        ),
                       ),
                       onPressed: () {
                         setState(() {
@@ -157,6 +167,9 @@ class _WelcomePageState extends State<WelcomePage> {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red[600],
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        ),
                       ),
                       onPressed: () {
                         setState(() {
