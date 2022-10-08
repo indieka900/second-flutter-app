@@ -44,9 +44,19 @@ class _WelcomePageState extends State<WelcomePage> {
           statusBarIconBrightness: Brightness.dark,
           statusBarBrightness: Brightness.light,
         ),
-        title: const Text(
-          "Welcome to our homepage",
-          style: TextStyle(color: Color.fromARGB(255, 53, 7, 219)),
+        title: Row(
+          children: [
+            Image.asset(
+              'images/icons.png',
+              scale: 2,
+            ),
+            const Text(
+              "Welcome to our homepage",
+              style: TextStyle(
+                color: Color.fromARGB(255, 53, 7, 219),
+              ),
+            ),
+          ],
         ),
         centerTitle: true,
         backgroundColor: Colors.teal[600],
@@ -103,21 +113,40 @@ class _WelcomePageState extends State<WelcomePage> {
               const SizedBox(
                 height: 20,
               ),
-              // ElevatedButton(
-              //   style: ElevatedButton.styleFrom(
-              //     backgroundColor: Colors.red[600],
-              //   ),
-              //   onPressed: () {
-              //     // setState(() {
-              //     //   if (currentNumbeOfimage > 1) {
-              //     //     currentNumbeOfimage--;
-              //     //   } else {
-              //     //     currentNumbeOfimage = 1;
-              //     //   }
-              //     // });
-              //   },
-              //   child: const Text("Remove image"),
-              // ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red[600],
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        currentNumbeOfimage++;
+                      });
+                    },
+                    child: const Text("Add image"),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red[600],
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        if (currentNumbeOfimage > 1) {
+                          currentNumbeOfimage--;
+                        } else {
+                          currentNumbeOfimage = 1;
+                        }
+                      });
+                    },
+                    child: const Text("Remove image"),
+                  ),
+                ],
+              ),
               const SizedBox(
                 height: 45,
               ),
