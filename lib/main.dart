@@ -63,123 +63,133 @@ class _WelcomePageState extends State<WelcomePage> {
       ),
       body: SingleChildScrollView(
         child: Center(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 15.0,
-              ),
-              Divider(
-                color: Color.fromARGB(255, 1, 31, 29),
-                height: 20,
-                thickness: 2,
-                indent: 10,
-                endIndent: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.brown[600]),
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) {
-                          return const Register();
-                        }),
-                      );
-                      // setState(() {
-                      //   if (currentPath == imagePath1) {
-                      //     currentPath = imagePath2;
-                      //   } else {
-                      //     currentPath = imagePath1;
-                      //   }
-                      // });
-                    },
-                    child: const Text("Register"),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.indigo[600],
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30.0),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 15.0,
+                ),
+                Divider(
+                  color: Color.fromARGB(255, 1, 31, 29),
+                  height: 20,
+                  thickness: 2,
+                  indent: 10,
+                  endIndent: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.brown[600]),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) {
+                            return const Register();
+                          }),
+                        );
+                        // setState(() {
+                        //   if (currentPath == imagePath1) {
+                        //     currentPath = imagePath2;
+                        //   } else {
+                        //     currentPath = imagePath1;
+                        //   }
+                        // });
+                      },
+                      child: const Text("Register"),
                     ),
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) {
-                          return const Nextpage();
-                        }),
-                      );
-                      // setState(() {
-                      //   currentNumbeOfimage++;
-                      // });
-                    },
-                    child: const Text("Login"),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Divider(
-                color: Color.fromARGB(255, 71, 48, 48),
-                height: 20,
-                thickness: 2,
-                indent: 10,
-                endIndent: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 10, 139, 122),
+                    const SizedBox(
+                      width: 20,
                     ),
-                    onPressed: () {
-                      setState(() {
-                        currentNumbeOfimage++;
-                      });
-                    },
-                    child: const Text("Add image"),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red[600],
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.indigo[600],
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) {
+                            return const Nextpage();
+                          }),
+                        );
+                        // setState(() {
+                        //   currentNumbeOfimage++;
+                        // });
+                      },
+                      child: const Text("Login"),
                     ),
-                    onPressed: () {
-                      setState(() {
-                        if (currentNumbeOfimage > 1) {
-                          currentNumbeOfimage--;
-                        } else {
-                          currentNumbeOfimage = 1;
-                        }
-                      });
-                    },
-                    child: const Text("Remove image"),
-                  ),
-                ],
-              ),
-              Divider(
-                color: Color.fromARGB(255, 49, 28, 28),
-                height: 20,
-                thickness: 2,
-                indent: 10,
-                endIndent: 10,
-              ),
-              const SizedBox(
-                height: 25,
-              ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Divider(
+                  color: Color.fromARGB(255, 71, 48, 48),
+                  height: 20,
+                  thickness: 2,
+                  indent: 10,
+                  endIndent: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 10, 139, 122),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          currentNumbeOfimage++;
+                        });
+                      },
+                      child: const Text("Add image"),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    // VerticalDivider(
+                    //   color: Colors.black,
+                    //   thickness: 2,
+                    //   width: 20,
+                    //   indent: 200,
+                    //   endIndent: 200,
+                    // ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red[600],
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          if (currentNumbeOfimage > 1) {
+                            currentNumbeOfimage--;
+                          } else {
+                            currentNumbeOfimage = 1;
+                          }
+                        });
+                      },
+                      child: const Text("Remove image"),
+                    ),
+                  ],
+                ),
+                Divider(
+                  color: Color.fromARGB(255, 49, 28, 28),
+                  height: 20,
+                  thickness: 2,
+                  indent: 10,
+                  endIndent: 10,
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
 
-              //Image.asset(currentPath),
-              //Image.asset('images/welcome2.png'),
-              Column(
-                children: List.generate(
-                    currentNumbeOfimage, (index) => Image.asset(currentPath)),
-              ),
-            ],
+                //Image.asset(currentPath),
+                //Image.asset('images/welcome2.png'),
+                Column(
+                  children: List.generate(
+                      currentNumbeOfimage, (index) => Image.asset(currentPath)),
+                ),
+              ],
+            ),
           ),
         ),
       ),
