@@ -66,7 +66,14 @@ class _WelcomePageState extends State<WelcomePage> {
           child: Column(
             children: [
               const SizedBox(
-                height: 60.0,
+                height: 15.0,
+              ),
+              Divider(
+                color: Color.fromARGB(255, 1, 31, 29),
+                height: 20,
+                thickness: 2,
+                indent: 10,
+                endIndent: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -95,7 +102,8 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.indigo[600]),
+                      backgroundColor: Colors.indigo[600],
+                    ),
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) {
@@ -111,14 +119,21 @@ class _WelcomePageState extends State<WelcomePage> {
                 ],
               ),
               const SizedBox(
+                height: 10,
+              ),
+              Divider(
+                color: Color.fromARGB(255, 71, 48, 48),
                 height: 20,
+                thickness: 2,
+                indent: 10,
+                endIndent: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red[600],
+                      backgroundColor: Color.fromARGB(255, 10, 139, 122),
                     ),
                     onPressed: () {
                       setState(() {
@@ -147,8 +162,15 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                 ],
               ),
+              Divider(
+                color: Color.fromARGB(255, 49, 28, 28),
+                height: 20,
+                thickness: 2,
+                indent: 10,
+                endIndent: 10,
+              ),
               const SizedBox(
-                height: 45,
+                height: 25,
               ),
 
               //Image.asset(currentPath),

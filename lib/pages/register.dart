@@ -27,6 +27,9 @@ class _RegisterState extends State<Register> {
       ),
       body: Center(
         child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color.fromARGB(255, 8, 206, 24),
+          ),
           onPressed: () {
             showDialog(
               context: context,
