@@ -11,7 +11,7 @@ class Nextpage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Login Page"),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 196, 150, 13),
+        backgroundColor: const Color.fromRGBO(196, 150, 13, 1),
       ),
       body: const Center(
         child: AboutListTile(

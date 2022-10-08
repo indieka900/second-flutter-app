@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'pages/login.dart';
 import 'pages/register.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,6 +39,11 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Colors.greenAccent,
+          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.light,
+        ),
         title: const Text("Welcome to our homepage"),
         centerTitle: true,
         backgroundColor: Colors.teal[600],
