@@ -82,6 +82,10 @@ class _WelcomePageState extends State<WelcomePage> {
                   children: [
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
+                        side: BorderSide(
+                          width: 3.0,
+                          color: Color.fromARGB(255, 127, 161, 184),
+                        ),
                         backgroundColor: Colors.brown[600],
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(30.0),
@@ -109,6 +113,10 @@ class _WelcomePageState extends State<WelcomePage> {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.indigo[600],
+                        side: BorderSide(
+                          width: 3.0,
+                          color: Color.fromARGB(255, 131, 41, 53),
+                        ),
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(20.0),
                         ),
@@ -142,6 +150,10 @@ class _WelcomePageState extends State<WelcomePage> {
                   children: [
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
+                        side: BorderSide(
+                          width: 3.0,
+                          color: Color.fromARGB(255, 102, 231, 108),
+                        ),
                         backgroundColor: Color.fromARGB(255, 10, 139, 122),
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(30.0),
@@ -166,6 +178,10 @@ class _WelcomePageState extends State<WelcomePage> {
                     // ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
+                        side: BorderSide(
+                          width: 3.0,
+                          color: Color.fromARGB(255, 231, 102, 167),
+                        ),
                         backgroundColor: Colors.red[600],
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(30.0),
