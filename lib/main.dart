@@ -44,7 +44,10 @@ class _WelcomePageState extends State<WelcomePage> {
           statusBarIconBrightness: Brightness.dark,
           statusBarBrightness: Brightness.light,
         ),
-        title: const Text("Welcome to our homepage"),
+        title: const Text(
+          "Welcome to our homepage",
+          style: TextStyle(color: Color.fromARGB(255, 53, 7, 219)),
+        ),
         centerTitle: true,
         backgroundColor: Colors.teal[600],
       ),
