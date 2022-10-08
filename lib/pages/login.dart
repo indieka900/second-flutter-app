@@ -9,9 +9,14 @@ class Nextpage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login Page"),
+        title: const Text(
+          "Login Page",
+          style: TextStyle(
+            color: Color.fromARGB(255, 104, 12, 9),
+          ),
+        ),
         centerTitle: true,
-        backgroundColor: const Color.fromRGBO(196, 150, 13, 1),
+        backgroundColor: const Color.fromARGB(255, 13, 196, 13),
       ),
       body: const Center(
         child: AboutListTile(

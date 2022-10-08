@@ -18,7 +18,10 @@ class _RegisterState extends State<Register> {
           statusBarIconBrightness: Brightness.dark,
           statusBarBrightness: Brightness.light,
         ),
-        title: const Text("Register Page"),
+        title: const Text(
+          "Register Page",
+          style: TextStyle(color: Color.fromARGB(255, 37, 80, 74)),
+        ),
         centerTitle: true,
         backgroundColor: Colors.amber[500],
       ),
