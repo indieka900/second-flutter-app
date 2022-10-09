@@ -127,9 +127,6 @@ class _WelcomePageState extends State<WelcomePage> {
                             return const Nextpage();
                           }),
                         );
-                        // setState(() {
-                        //   currentNumbeOfimage++;
-                        // });
                       },
                       child: const Text("Login"),
                     ),
