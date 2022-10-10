@@ -18,15 +18,17 @@ class _ContentState extends State<ContentF> {
           "Some flutter key points",
           style: TextStyle(color: Color.fromARGB(181, 42, 238, 245)),
         ),
-        backgroundColor: Color.fromARGB(255, 136, 115, 38),
+        backgroundColor:
+            isOn ? Color.fromARGB(255, 136, 115, 38) : Colors.black,
         automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
           icon: Icon(
-            Icons.home_filled,
+            Icons.home,
             color: Color.fromARGB(255, 21, 9, 92),
+            size: 30,
           ),
         ),
         actions: [
@@ -49,6 +51,7 @@ class _ContentState extends State<ContentF> {
               );
             },
             icon: Icon(Icons.info_outline_rounded),
+            color: Color.fromARGB(255, 6, 247, 18),
           ),
         ],
       ),
