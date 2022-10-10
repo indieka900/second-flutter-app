@@ -8,6 +8,8 @@ class ContentF extends StatefulWidget {
 }
 
 class _ContentState extends State<ContentF> {
+  bool isOn = false;
+  bool? isChecked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,20 +56,25 @@ class _ContentState extends State<ContentF> {
               ),
             ),
           ),
-          ElevatedButton(
-            onPressed: () {
-              debugPrint('Elevated button clicked');
-            },
-            child: Text("Elevated button"),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          TextButton(
-            onPressed: () {
-              debugPrint("TextButton was pressed");
-            },
-            child: Text("Text button"),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  debugPrint('Elevated button clicked');
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: isOn ? Colors.brown : Colors.green,
+                ),
+                child: Text("Elevated button"),
+              ),
+              TextButton(
+                onPressed: () {
+                  debugPrint("TextButton was pressed");
+                },
+                child: Text("Text button"),
+              ),
+            ],
           ),
           SizedBox(
             height: 5,
@@ -78,6 +85,47 @@ class _ContentState extends State<ContentF> {
             },
             child: Text("Outlined button"),
           ),
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              print("Row was tapped");
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Icon(
+                  Icons.local_fire_department_sharp,
+                  color: Color.fromARGB(255, 245, 20, 3),
+                ),
+                Text(
+                  "This is the Raw widget",
+                  style: TextStyle(color: Colors.redAccent),
+                ),
+                Icon(Icons.local_fire_department_sharp,
+                    color: Color.fromARGB(255, 245, 20, 3)),
+              ],
+            ),
+          ),
+          Switch(
+            value: isOn,
+            onChanged: (bool newBool) {
+              setState(() {
+                isOn = newBool;
+              });
+            },
+            activeColor: Color.fromARGB(255, 221, 46, 34),
+            //hoverColor: Colors.redAccent,
+          ),
+          Checkbox(
+            value: isChecked,
+            onChanged: (bool? checked) {
+              setState(() {
+                isChecked = checked;
+              });
+            },
+            checkColor: Colors.pink,
+            activeColor: Colors.greenAccent,
+          )
         ],
       ),
     );
