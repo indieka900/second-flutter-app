@@ -31,7 +31,23 @@ class _ContentState extends State<ContentF> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => const AboutDialog(
+                  //applicationIcon: FlutterLogo(),
+                  applicationLegalese: 'Legalese',
+                  applicationName: 'Joseph\'s Flutter App',
+                  applicationVersion: 'version1.0.6',
+                  children: [
+                    Text(
+                      "This details were created by Joseph580",
+                      style: TextStyle(color: Color.fromARGB(255, 75, 80, 2)),
+                    ),
+                  ],
+                ),
+              );
+            },
             icon: Icon(Icons.info_outline_rounded),
           ),
         ],
