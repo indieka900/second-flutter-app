@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'pages/home_register.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -9,6 +10,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  int currentPage = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,33 +36,40 @@ class _RegisterState extends State<Register> {
           icon: Icon(Icons.arrow_back_ios_new),
         ),
       ),
-      body: Center(
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color.fromARGB(255, 8, 206, 24),
-          ),
-          onPressed: () {
-            showDialog(
-              context: context,
-              builder: (context) => const AboutDialog(
-                applicationIcon: FlutterLogo(),
-                applicationLegalese: 'Legalese',
-                applicationName: 'Joseph\'s Flutter App',
-                applicationVersion: 'version1.0.5',
-                children: [
-                  Text("This details were created by Joseph580"),
-                ],
-              ),
-            );
-          },
-          child: const Text("App info"),
-        ),
-      ),
+      // body: Center(
+      //   child: ElevatedButton(
+      //     style: ElevatedButton.styleFrom(
+      //       backgroundColor: Color.fromARGB(255, 8, 206, 24),
+      //     ),
+      //     onPressed: () {
+      //       showDialog(
+      //         context: context,
+      //         builder: (context) => const AboutDialog(
+      //           applicationIcon: FlutterLogo(),
+      //           applicationLegalese: 'Legalese',
+      //           applicationName: 'Joseph\'s Flutter App',
+      //           applicationVersion: 'version1.0.5',
+      //           children: [
+      //             Text("This details were created by Joseph580"),
+      //           ],
+      //         ),
+      //       );
+      //     },
+      //     child: const Text("App info"),
+      //   ),
+      // ),
+      body: Homepage(),
       bottomNavigationBar: NavigationBar(
         destinations: [
           NavigationDestination(icon: Icon(Icons.home_outlined), label: "Home"),
           NavigationDestination(icon: Icon(Icons.person), label: "Profile"),
         ],
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPage = index;
+          });
+        },
+        selectedIndex: currentPage,
       ),
     );
   }
