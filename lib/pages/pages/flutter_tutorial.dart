@@ -40,6 +40,44 @@ class _ContentState extends State<ContentF> {
           Divider(
             color: Colors.blueAccent,
           ),
+          Container(
+            margin: EdgeInsets.all(10),
+            padding: EdgeInsets.all(8),
+            width: double.infinity,
+            color: Colors.orangeAccent,
+            child: Center(
+              child: Text(
+                "This is a text widget",
+                style: TextStyle(
+                  color: Colors.brown[800],
+                ),
+              ),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              debugPrint('Elevated button clicked');
+            },
+            child: Text("Elevated button"),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          TextButton(
+            onPressed: () {
+              debugPrint("TextButton was pressed");
+            },
+            child: Text("Text button"),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          OutlinedButton(
+            onPressed: () {
+              debugPrint("OutlinedButton was pressed");
+            },
+            child: Text("Outlined button"),
+          ),
         ],
       ),
     );
