@@ -20,10 +20,19 @@ class _RegisterState extends State<Register> {
         ),
         title: const Text(
           "Register Page",
-          style: TextStyle(color: Color.fromARGB(255, 37, 80, 74)),
+          style: TextStyle(
+            color: Color.fromARGB(255, 37, 80, 74),
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.amber[500],
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: Icon(Icons.arrow_back_ios_new),
+        ),
       ),
       body: Center(
         child: ElevatedButton(
@@ -46,6 +55,12 @@ class _RegisterState extends State<Register> {
           },
           child: const Text("App info"),
         ),
+      ),
+      bottomNavigationBar: NavigationBar(
+        destinations: [
+          NavigationDestination(icon: Icon(Icons.home_outlined), label: "Home"),
+          NavigationDestination(icon: Icon(Icons.person), label: "Profile"),
+        ],
       ),
     );
   }
