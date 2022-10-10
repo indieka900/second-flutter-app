@@ -18,7 +18,7 @@ class Homepage extends StatelessWidget {
           );
           //debugPrint("Clicked elevated button");
         },
-        child: Text("FLutter Short tutorial"),
+        child: Text("Flutter Short tutorial"),
       ),
     );
   }

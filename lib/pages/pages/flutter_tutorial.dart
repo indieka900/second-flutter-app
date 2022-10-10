@@ -84,6 +84,8 @@ class _ContentState extends State<ContentF> {
               onPressed: () {
                 debugPrint("OutlinedButton was pressed");
               },
+              style: OutlinedButton.styleFrom(
+                  backgroundColor: isOn ? Colors.black : Colors.amberAccent),
               child: Text("Outlined button"),
             ),
             GestureDetector(

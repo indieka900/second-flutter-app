@@ -59,6 +59,14 @@ class _RegisterState extends State<Register> {
       //   ),
       // ),
       body: Homepage(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {});
+        },
+        splashColor: Colors.green[400],
+        backgroundColor: Colors.purpleAccent,
+        child: Icon(Icons.add),
+      ),
       bottomNavigationBar: NavigationBar(
         destinations: [
           NavigationDestination(icon: Icon(Icons.home_outlined), label: "Home"),
