@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutterpro/pages/pages/profile.dart';
 import 'pages/home_register.dart';
 
 class Register extends StatefulWidget {
@@ -11,6 +12,7 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   int currentPage = 0;
+  List<Widget> pages = [Homepage(), Profilepage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +60,7 @@ class _RegisterState extends State<Register> {
       //     child: const Text("App info"),
       //   ),
       // ),
-      body: Homepage(),
+      body: pages[currentPage],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {});
