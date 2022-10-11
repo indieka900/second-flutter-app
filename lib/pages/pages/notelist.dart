@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutterpro/pages/pages/delete.dart';
 import 'package:flutterpro/pages/pages/note_modifier.dart';
-//import 'package:flutterpro/pages/pages/pages_for_listing.dart';
+import 'package:flutterpro/pages/pages/pages_for_listing.dart';
+import 'package:flutterpro/services/notes_service.dart';
+import 'package:get_it/get_it.dart';
 
-class Mylist extends StatelessWidget {
+class Mylist extends StatefulWidget {
   Mylist({super.key});
-  final notes = [
-    
-  ];
 
+  @override
+  State<Mylist> createState() => _MylistState();
+}
+
+class _MylistState extends State<Mylist> {
+  NotesService get service => GetIt.I<NotesService>();
+  List<NotesL> notes = [];
 
   String formatDateTime(DateTime dateTime) {
     return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
   }
 
   @override
+  void initState() {
+    notes = service.getNotesList();
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

@@ -6,11 +6,12 @@ import 'pages/pages/register.dart';
 import 'package:flutter/services.dart';
 
 void setupLocator() {
-  GetIt.instance.registerLazySingleton(() => NotesService());
+  GetIt.I.registerLazySingleton(() => NotesService());
 }
 
 void main() {
   runApp(const MyApp());
+  setupLocator();
 }
 
 class MyApp extends StatelessWidget {
