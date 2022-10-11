@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterpro/pages/pages/note_modifier.dart';
 import 'package:flutterpro/pages/pages/pages_for_listing.dart';
 
 class Mylist extends StatelessWidget {
@@ -37,7 +38,15 @@ class Mylist extends StatelessWidget {
         title: Text("List Items"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return NoteModifier();
+              },
+            ),
+          );
+        },
         child: Icon(Icons.add),
       ),
       body: ListView.separated(
@@ -47,6 +56,17 @@ class Mylist extends StatelessWidget {
                 notes[index].noteTitle,
                 style: TextStyle(color: Theme.of(context).primaryColor),
               ),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return NoteModifier(
+                        noteid: notes[index].noteId,
+                      );
+                    },
+                  ),
+                );
+              },
               subtitle: Text(
                   'Created on ${formatDateTime(notes[index].CreatDateTime)}'),
             );
