@@ -54,15 +54,25 @@ class Mylist extends StatelessWidget {
           itemBuilder: (_, index) {
             return Dismissible(
               key: ValueKey(notes[index].noteId),
-              direction: DismissDirection.horizontal,
-              onDismissed: (direction) {},
-              confirmDismiss: (direction) async{
+              direction: DismissDirection.startToEnd,
+              onDismissed: (direction) {
+                notes.removeAt(index);
+              },
+              confirmDismiss: (direction) async {
                 final result = await showDialog(
                   context: context,
                   builder: (_) => OnDelete(),
                 );
                 return result;
               },
+              background: Container(
+                color: Colors.redAccent,
+                padding: EdgeInsets.only(left: 20),
+                child: Align(
+                  child: Icon(Icons.delete),
+                  alignment: Alignment.centerLeft,
+                ),
+              ),
               child: ListTile(
                 title: Text(
                   notes[index].noteTitle,

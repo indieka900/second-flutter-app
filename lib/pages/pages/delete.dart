@@ -11,7 +11,7 @@ class OnDelete extends StatelessWidget {
       actions: [
         ElevatedButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(context).pop(true);
           },
           child: Text('Yes'),
         ),
@@ -19,7 +19,7 @@ class OnDelete extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop(false);
           },
-          child: Text('Yes'),
+          child: Text('No'),
         )
       ],
     );
