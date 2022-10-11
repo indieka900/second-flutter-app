@@ -96,7 +96,7 @@ class _MylistState extends State<Mylist> {
                   child: ListTile(
                     title: Text(
                       _apiResponse!.data![index].noteTitle,
-                      style: TextStyle(color: Theme.of(context).primaryColor),
+                      style: TextStyle(color: Colors.lightGreen),
                     ),
                     onTap: () {
                       Navigator.of(context).push(
@@ -110,7 +110,9 @@ class _MylistState extends State<Mylist> {
                       );
                     },
                     subtitle: Text(
-                      'Created on ${formatDateTime(_apiResponse!.data![index].lastEditedDatetime ?? _apiResponse!.data![index].CreatDateTime)}',
+                      _apiResponse!.data![index].CreatDateTime,
+
+                      //'Created on ${formatDateTime(_apiResponse!.data![index].lastEditedDatetime ?? _apiResponse!.data![index].CreatDateTime)}',
                     ),
                   ),
                 );
@@ -120,6 +122,5 @@ class _MylistState extends State<Mylist> {
         },
       ),
     );
-    //return Text('No data to be displayed');
   }
 }

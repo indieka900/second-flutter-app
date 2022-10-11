@@ -5,21 +5,21 @@ import 'package:flutterpro/pages/pages/pages_for_listing.dart';
 import 'package:http/http.dart' as http;
 
 class NotesService {
-  static const API = 'https://tq-notes-api-jkrgrdggbq-el.a.run.app';
-  static const headers = {'apiKey': '2f5cd0b9-8016-42f7-91b6-a9c81fe0e7db'};
+  static const API = 'https://jsonplaceholder.typicode.com/users';
+  //static const headers = {'apiKey': '2f5cd0b9-8016-42f7-91b6-a9c81fe0e7db'};
   Future<APIResponse<List<NotesL>>> getNotesList() {
-    return http.get(Uri.parse(API + '/notes'), headers: headers).then((data) {
+    return http.get(Uri.parse(API)).then((data) {
       if (data.statusCode == 200) {
         final jsonData = jsonDecode(data.body);
         final notes = <NotesL>[];
         for (var item in jsonData) {
           final note = NotesL(
-            noteId: item['noteID'],
-            noteTitle: item['noteTitle'],
-            CreatDateTime: DateTime.parse(item['CreateDateTime']),
-            lastEditedDatetime: item['latestEditDateTime'] != null
-                ? DateTime.parse(item['"latestEditDateTime'])
-                : null,
+            noteId: item['id'].toString(),
+            noteTitle: item['name'],
+            CreatDateTime: item['email'],
+            // lastEditedDatetime: item['latestEditDateTime'] != null
+            //     ? DateTime.parse(item['latestEditDateTime'])
+            //     : null,
           );
           notes.add(note);
         }
