@@ -112,8 +112,9 @@ class _MylistState extends State<Mylist> {
                       );
                     },
                     subtitle: Text(
-                      '${_apiResponse!.data![index].CreatDateTime}\n${_apiResponse!.data![index].company['name']}',
-                      //'Created on ${formatDateTime(_apiResponse!.data![index].lastEditedDatetime ?? _apiResponse!.data![index].CreatDateTime)}',
+                      '''email: ${_apiResponse!.data![index].CreatDateTime}
+phone number: ${_apiResponse!.data![index].phoneNumber}
+company name: ${_apiResponse!.data![index].company['name']}''',
                     ),
                   ),
                 );
