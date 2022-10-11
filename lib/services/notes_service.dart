@@ -14,13 +14,16 @@ class NotesService {
         final notes = <NotesL>[];
         for (var item in jsonData) {
           final note = NotesL(
-            noteId: item['id'].toString(),
-            noteTitle: item['name'],
-            CreatDateTime: item['email'],
-            // lastEditedDatetime: item['latestEditDateTime'] != null
-            //     ? DateTime.parse(item['latestEditDateTime'])
-            //     : null,
-          );
+              noteId: item['id'].toString(),
+              noteTitle: item['name'],
+              CreatDateTime: item['email'],
+              phoneNumber: item['phone'],
+              website: item['website'],
+              company: item['company']
+              // lastEditedDatetime: item['latestEditDateTime'] != null
+              //     ? DateTime.parse(item['latestEditDateTime'])
+              //     : null,
+              );
           notes.add(note);
         }
         return APIResponse<List<NotesL>>(data: notes);

@@ -18,6 +18,8 @@ class _MylistState extends State<Mylist> {
   APIResponse<List<NotesL>>? _apiResponse;
   bool _isLoading = false;
 
+  //get name => _apiResponse!.company;
+  //String name;
   String formatDateTime(DateTime dateTime) {
     return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
   }
@@ -110,8 +112,7 @@ class _MylistState extends State<Mylist> {
                       );
                     },
                     subtitle: Text(
-                      _apiResponse!.data![index].CreatDateTime,
-
+                      '${_apiResponse!.data![index].CreatDateTime}\n${_apiResponse!.data![index].company['name']}',
                       //'Created on ${formatDateTime(_apiResponse!.data![index].lastEditedDatetime ?? _apiResponse!.data![index].CreatDateTime)}',
                     ),
                   ),
