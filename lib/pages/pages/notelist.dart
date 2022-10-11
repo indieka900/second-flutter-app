@@ -1,32 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutterpro/pages/pages/delete.dart';
 import 'package:flutterpro/pages/pages/note_modifier.dart';
-import 'package:flutterpro/pages/pages/pages_for_listing.dart';
+//import 'package:flutterpro/pages/pages/pages_for_listing.dart';
 
 class Mylist extends StatelessWidget {
   Mylist({super.key});
   final notes = [
-    new NotesL(
-        noteId: '1',
-        CreatDateTime: DateTime.now(),
-        noteTitle: 'First Tasks',
-        lastEditedDatetime: DateTime.now()),
-    new NotesL(
-        noteId: '2',
-        CreatDateTime: DateTime.now(),
-        noteTitle: 'Second Tasks',
-        lastEditedDatetime: DateTime.now()),
-    new NotesL(
-        noteId: '3',
-        CreatDateTime: DateTime.now(),
-        noteTitle: 'Third Tasks',
-        lastEditedDatetime: DateTime.now()),
-    new NotesL(
-        noteId: '4',
-        CreatDateTime: DateTime.now(),
-        noteTitle: 'Forth Tasks',
-        lastEditedDatetime: DateTime.now()),
+    
   ];
+
 
   String formatDateTime(DateTime dateTime) {
     return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
