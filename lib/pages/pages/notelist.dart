@@ -36,10 +36,11 @@ class _MylistState extends State<Mylist> {
     _apiResponse = await service.getNotesList();
 
     setState(() {
-      _isLoading = true;
+      _isLoading = false;
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -57,52 +58,68 @@ class _MylistState extends State<Mylist> {
         },
         child: Icon(Icons.add),
       ),
-      body: ListView.separated(
-          itemBuilder: (_, index) {
-            return Dismissible(
-              key: ValueKey(notes[index].noteId),
-              direction: DismissDirection.startToEnd,
-              onDismissed: (direction) {
-                notes.removeAt(index);
-              },
-              confirmDismiss: (direction) async {
-                final result = await showDialog(
-                  context: context,
-                  builder: (_) => OnDelete(),
-                );
-                return result;
-              },
-              background: Container(
-                color: Colors.redAccent,
-                padding: EdgeInsets.only(left: 20),
-                child: Align(
-                  child: Icon(Icons.delete),
-                  alignment: Alignment.centerLeft,
-                ),
-              ),
-              child: ListTile(
-                title: Text(
-                  notes[index].noteTitle,
-                  style: TextStyle(color: Theme.of(context).primaryColor),
-                ),
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return NoteModifier(
-                          noteid: notes[index].noteId,
-                        );
-                      },
-                    ),
-                  );
-                },
-                subtitle: Text(
-                    'Created on ${formatDateTime(notes[index].CreatDateTime)}'),
-              ),
+      body: Builder(
+        builder: (_) {
+          if (_isLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
             );
-          },
-          separatorBuilder: (_, __) => Divider(height: 2),
-          itemCount: notes.length),
+          }
+          if (_apiResponse!.error) {
+            return Center(
+              child: Text(_apiResponse!.errorMessage!),
+            );
+          }
+          return ListView.separated(
+              itemBuilder: (_, index) {
+                return Dismissible(
+                  key: ValueKey(_apiResponse!.data![index].noteId),
+                  direction: DismissDirection.startToEnd,
+                  onDismissed: (direction) {
+                    //_apiResponse.data.removeAt(index);
+                  },
+                  confirmDismiss: (direction) async {
+                    final result = await showDialog(
+                      context: context,
+                      builder: (_) => OnDelete(),
+                    );
+                    return result;
+                  },
+                  background: Container(
+                    color: Colors.redAccent,
+                    padding: EdgeInsets.only(left: 20),
+                    child: Align(
+                      child: Icon(Icons.delete),
+                      alignment: Alignment.centerLeft,
+                    ),
+                  ),
+                  child: ListTile(
+                    title: Text(
+                      _apiResponse!.data![index].noteTitle,
+                      style: TextStyle(color: Theme.of(context).primaryColor),
+                    ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return NoteModifier(
+                              noteid: _apiResponse!.data![index].noteId,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    subtitle: Text(
+                      'Created on ${formatDateTime(_apiResponse!.data![index].lastEditedDatetime ?? _apiResponse!.data![index].CreatDateTime)}',
+                    ),
+                  ),
+                );
+              },
+              separatorBuilder: (_, __) => Divider(height: 2),
+              itemCount: _apiResponse!.data!.length);
+        },
+      ),
     );
+    //return Text('No data to be displayed');
   }
 }

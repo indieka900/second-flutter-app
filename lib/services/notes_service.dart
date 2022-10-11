@@ -14,16 +14,19 @@ class NotesService {
         final notes = <NotesL>[];
         for (var item in jsonData) {
           final note = NotesL(
-              noteId: item['noteID'],
-              noteTitle: item['noteTitle'],
-              CreatDateTime: item['CreatDateTime'],
-              lastEditedDatetime: item['latestEditDateTime']);
+            noteId: item['noteID'],
+            noteTitle: item['noteTitle'],
+            CreatDateTime: DateTime.parse(item['CreateDateTime']),
+            lastEditedDatetime: item['latestEditDateTime'] != null
+                ? DateTime.parse(item['"latestEditDateTime'])
+                : null,
+          );
           notes.add(note);
         }
         return APIResponse<List<NotesL>>(data: notes);
       }
       return APIResponse<List<NotesL>>(
-          error: true, errorMessage: 'An Error Occured');
+          error: true, errorMessage: 'An Error on Occured');
     }).catchError(
       (_) => APIResponse<List<NotesL>>(
           error: true, errorMessage: 'An error occured'),
