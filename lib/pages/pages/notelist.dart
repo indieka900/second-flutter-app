@@ -1,7 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutterpro/pages/pages/pages_for_listing.dart';
 
 class Mylist extends StatelessWidget {
-  const Mylist({super.key});
+  Mylist({super.key});
+  final notes = [
+    new NotesL(
+        noteId: '1',
+        CreatDateTime: DateTime.now(),
+        noteTitle: 'First Tasks',
+        lastEditedDatetime: DateTime.now()),
+    new NotesL(
+        noteId: '2',
+        CreatDateTime: DateTime.now(),
+        noteTitle: 'Second Tasks',
+        lastEditedDatetime: DateTime.now()),
+    new NotesL(
+        noteId: '3',
+        CreatDateTime: DateTime.now(),
+        noteTitle: 'Third Tasks',
+        lastEditedDatetime: DateTime.now()),
+    new NotesL(
+        noteId: '4',
+        CreatDateTime: DateTime.now(),
+        noteTitle: 'Forth Tasks',
+        lastEditedDatetime: DateTime.now()),
+  ];
+
+  String formatDateTime(DateTime dateTime) {
+    return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +44,15 @@ class Mylist extends StatelessWidget {
           itemBuilder: (_, index) {
             return ListTile(
               title: Text(
-                "Hello",
+                notes[index].noteTitle,
                 style: TextStyle(color: Theme.of(context).primaryColor),
               ),
-              subtitle: Text('Created on 11/10/2022'),
+              subtitle: Text(
+                  'Created on ${formatDateTime(notes[index].CreatDateTime)}'),
             );
           },
           separatorBuilder: (_, __) => Divider(height: 2),
-          itemCount: 20),
+          itemCount: notes.length),
     );
   }
 }
