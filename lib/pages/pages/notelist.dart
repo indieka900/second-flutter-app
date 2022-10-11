@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterpro/pages/pages/delete.dart';
 import 'package:flutterpro/pages/pages/note_modifier.dart';
 import 'package:flutterpro/pages/pages/pages_for_listing.dart';
 
@@ -51,24 +52,36 @@ class Mylist extends StatelessWidget {
       ),
       body: ListView.separated(
           itemBuilder: (_, index) {
-            return ListTile(
-              title: Text(
-                notes[index].noteTitle,
-                style: TextStyle(color: Theme.of(context).primaryColor),
-              ),
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return NoteModifier(
-                        noteid: notes[index].noteId,
-                      );
-                    },
-                  ),
+            return Dismissible(
+              key: ValueKey(notes[index].noteId),
+              direction: DismissDirection.horizontal,
+              onDismissed: (direction) {},
+              confirmDismiss: (direction) async{
+                final result = await showDialog(
+                  context: context,
+                  builder: (_) => OnDelete(),
                 );
+                return result;
               },
-              subtitle: Text(
-                  'Created on ${formatDateTime(notes[index].CreatDateTime)}'),
+              child: ListTile(
+                title: Text(
+                  notes[index].noteTitle,
+                  style: TextStyle(color: Theme.of(context).primaryColor),
+                ),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return NoteModifier(
+                          noteid: notes[index].noteId,
+                        );
+                      },
+                    ),
+                  );
+                },
+                subtitle: Text(
+                    'Created on ${formatDateTime(notes[index].CreatDateTime)}'),
+              ),
             );
           },
           separatorBuilder: (_, __) => Divider(height: 2),
