@@ -1,29 +1,33 @@
+import 'dart:convert';
+
+import 'package:flutterpro/pages/pages/api_response.dart';
 import 'package:flutterpro/pages/pages/pages_for_listing.dart';
+import 'package:http/http.dart' as http;
 
 class NotesService {
-  List<NotesL> getNotesList() {
-    return [
-      new NotesL(
-        noteId: '1',
-        CreatDateTime: DateTime.now(),
-        noteTitle: 'First Tasks',
-        lastEditedDatetime: DateTime.now()),
-    new NotesL(
-        noteId: '2',
-        CreatDateTime: DateTime.now(),
-        noteTitle: 'Second Tasks',
-        lastEditedDatetime: DateTime.now()),
-    new NotesL(
-        noteId: '3',
-        CreatDateTime: DateTime.now(),
-        noteTitle: 'Third Tasks',
-        lastEditedDatetime: DateTime.now()),
-    new NotesL(
-        noteId: '4',
-        CreatDateTime: DateTime.now(),
-        noteTitle: 'Forth Tasks',
-        lastEditedDatetime: DateTime.now()),
-    ];
+  static const API = 'https://tq-notes-api-jkrgrdggbq-el.a.run.app';
+  static const headers = {'apiKey': '2f5cd0b9-8016-42f7-91b6-a9c81fe0e7db'};
+  Future<APIResponse<List<NotesL>>> getNotesList() {
+    return http.get(Uri.parse(API + '/notes'), headers: headers).then((data) {
+      if (data.statusCode == 200) {
+        final jsonData = jsonDecode(data.body);
+        final notes = <NotesL>[];
+        for (var item in jsonData) {
+          final note = NotesL(
+              noteId: item['noteID'],
+              noteTitle: item['noteTitle'],
+              CreatDateTime: item['CreatDateTime'],
+              lastEditedDatetime: item['latestEditDateTime']);
+          notes.add(note);
+        }
+        return APIResponse<List<NotesL>>(data: notes);
+      }
+      return APIResponse<List<NotesL>>(
+          error: true, errorMessage: 'An Error Occured');
+    }).catchError(
+      (_) => APIResponse<List<NotesL>>(
+          error: true, errorMessage: 'An error occured'),
+    );
   }
   //
 }

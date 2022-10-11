@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterpro/pages/pages/api_response.dart';
 import 'package:flutterpro/pages/pages/delete.dart';
 import 'package:flutterpro/pages/pages/note_modifier.dart';
 import 'package:flutterpro/pages/pages/pages_for_listing.dart';
@@ -14,7 +15,8 @@ class Mylist extends StatefulWidget {
 
 class _MylistState extends State<Mylist> {
   NotesService get service => GetIt.I<NotesService>();
-  List<NotesL> notes = [];
+  APIResponse<List<NotesL>>? _apiResponse;
+  bool _isLoading = false;
 
   String formatDateTime(DateTime dateTime) {
     return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
@@ -22,8 +24,20 @@ class _MylistState extends State<Mylist> {
 
   @override
   void initState() {
-    notes = service.getNotesList();
+    _fetchNotes();
     super.initState();
+  }
+
+  _fetchNotes() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    _apiResponse = await service.getNotesList();
+
+    setState(() {
+      _isLoading = true;
+    });
   }
 
   Widget build(BuildContext context) {
