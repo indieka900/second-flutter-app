@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterpro/pages/pages/profile.dart';
-import 'pages/home_register.dart';
+import 'home_register.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -11,6 +11,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  int indexes = 1;
   int currentPage = 0;
   List<Widget> pages = [Homepage(), Profilepage()];
   @override
@@ -63,7 +64,9 @@ class _RegisterState extends State<Register> {
       body: pages[currentPage],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {});
+          setState(() {
+            indexes++;
+          });
         },
         splashColor: Colors.green[400],
         backgroundColor: Colors.purpleAccent,
