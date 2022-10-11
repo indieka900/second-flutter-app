@@ -1,6 +1,7 @@
 //import 'dart:html';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterpro/pages/pages/notelist.dart';
 
 class Nextpage extends StatelessWidget {
   const Nextpage({super.key});
@@ -64,6 +65,18 @@ class Nextpage extends StatelessWidget {
               ],
             ),
           ),
+          OutlinedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return Mylist();
+                  },
+                ),
+              );
+            },
+            child: Text("List page"),
+          )
         ],
       ),
     );
