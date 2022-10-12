@@ -1,7 +1,7 @@
 class NotesL {
   var noteId;
   var noteTitle;
-  var CreatDateTime;
+  var email;
   var phoneNumber;
   var website;
   var company;
@@ -9,7 +9,7 @@ class NotesL {
   NotesL(
       {this.noteId,
       this.noteTitle,
-      this.CreatDateTime,
+      this.email,
       this.company,
       this.website,
       this.phoneNumber}) {}

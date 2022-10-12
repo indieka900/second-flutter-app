@@ -16,7 +16,7 @@ class NotesService {
           final note = NotesL(
               noteId: item['id'].toString(),
               noteTitle: item['name'],
-              CreatDateTime: item['email'],
+              email: item['email'],
               phoneNumber: item['phone'],
               website: item['website'],
               company: item['company']
@@ -32,7 +32,10 @@ class NotesService {
           error: true, errorMessage: 'An Error on Occured');
     }).catchError(
       (_) => APIResponse<List<NotesL>>(
-          error: true, errorMessage: 'An error occured'),
+        error: true,
+        errorMessage:
+            'An error occured\n Make sure you\'re connected to internet',
+      ),
     );
   }
   //

@@ -97,8 +97,8 @@ class _MylistState extends State<Mylist> {
                   ),
                   child: ListTile(
                     title: Text(
-                      _apiResponse!.data![index].noteTitle,
-                      style: TextStyle(color: Colors.lightGreen),
+                      '${_apiResponse!.data![index].noteId}. ${_apiResponse!.data![index].noteTitle}',
+                      style: TextStyle(color: Color.fromARGB(255, 26, 1, 248)),
                     ),
                     onTap: () {
                       Navigator.of(context).push(
@@ -112,9 +112,11 @@ class _MylistState extends State<Mylist> {
                       );
                     },
                     subtitle: Text(
-                      '''email: ${_apiResponse!.data![index].CreatDateTime}
-phone number: ${_apiResponse!.data![index].phoneNumber}
-company name: ${_apiResponse!.data![index].company['name']}''',
+                      '''
+    email: ${_apiResponse!.data![index].email}
+    phone number: ${_apiResponse!.data![index].phoneNumber}
+    company name: ${_apiResponse!.data![index].company['name']}''',
+                      style: TextStyle(color: Color.fromARGB(255, 83, 7, 80)),
                     ),
                   ),
                 );

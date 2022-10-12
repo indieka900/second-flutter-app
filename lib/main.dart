@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      darkTheme: ThemeData(brightness: Brightness.dark),
+      //darkTheme: ThemeData(brightness: Brightness.dark),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -48,7 +48,7 @@ class _WelcomePageState extends State<WelcomePage> {
     return Scaffold(
       appBar: AppBar(
         systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Color.fromARGB(255, 51, 78, 2),
+          statusBarColor: Color.fromARGB(255, 75, 114, 3),
           statusBarIconBrightness: Brightness.dark,
           statusBarBrightness: Brightness.light,
         ),
