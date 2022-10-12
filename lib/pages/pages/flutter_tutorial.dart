@@ -10,6 +10,7 @@ class ContentF extends StatefulWidget {
 class _ContentState extends State<ContentF> {
   bool isOn = false;
   bool? isChecked = false;
+  String result = 'No result yet';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,11 +91,21 @@ class _ContentState extends State<ContentF> {
                 ),
                 TextButton(
                   onPressed: () {
+                    someLongRunningOperationApi();
+                  },
+                  child: Text('Future (async/await)'),
+                ),
+                TextButton(
+                  onPressed: () {
                     debugPrint("TextButton was pressed");
                   },
                   child: Text("Text button"),
                 ),
               ],
+            ),
+            Container(
+              height: 20,
+              child: Text(result),
             ),
             SizedBox(
               height: 5,
@@ -159,5 +170,25 @@ class _ContentState extends State<ContentF> {
         ),
       ),
     );
+  }
+
+  void someLongRunningOperationApi() {
+    Future.delayed(Duration(seconds: 3)).then((value) {
+      setState(() {
+        this.result = 'First operation completed';
+      });
+      Future.delayed(Duration(seconds: 3)).then((value) {
+        setState(() {
+          this.result = 'Second operation completed';
+        });
+        Future.delayed(Duration(seconds: 3)).then((value) {
+          setState(() {
+            this.result = 'Third operation completed';
+          });
+        });
+      });
+    }).catchError((onError) {
+      print('Error occured');
+    });
   }
 }
