@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutterpro/pages/pages/api_response.dart';
+import 'package:flutterpro/pages/pages/note.dart';
 import 'package:flutterpro/pages/pages/pages_for_listing.dart';
 import 'package:http/http.dart' as http;
 
@@ -13,18 +14,7 @@ class NotesService {
         final jsonData = jsonDecode(data.body);
         final notes = <NotesL>[];
         for (var item in jsonData) {
-          final note = NotesL(
-              noteId: item['id'].toString(),
-              noteTitle: item['name'],
-              email: item['email'],
-              phoneNumber: item['phone'],
-              website: item['website'],
-              company: item['company']
-              // lastEditedDatetime: item['latestEditDateTime'] != null
-              //     ? DateTime.parse(item['latestEditDateTime'])
-              //     : null,
-              );
-          notes.add(note);
+          notes.add(NotesL.fromJson(item));
         }
         return APIResponse<List<NotesL>>(data: notes);
       }
@@ -38,5 +28,22 @@ class NotesService {
       ),
     );
   }
+
   //
+  Future<APIResponse<Note>> getNote(String noteID) {
+    return http.get(Uri.parse(API + '/' + noteID)).then((data) {
+      if (data.statusCode == 200) {
+        final jsonData = jsonDecode(data.body);
+        return APIResponse<Note>(data: Note.fromJson(jsonData));
+      }
+      return APIResponse<Note>(
+          error: true, errorMessage: 'An Error on Occured');
+    }).catchError(
+      (_) => APIResponse<Note>(
+        error: true,
+        errorMessage:
+            'An error occured\n Make sure you\'re connected to internet',
+      ),
+    );
+  }
 }

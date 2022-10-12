@@ -1,4 +1,5 @@
-class NotesL {
+
+class Note {
   var noteId;
   var noteTitle;
   var email;
@@ -6,15 +7,16 @@ class NotesL {
   var website;
   var company;
 
-  NotesL(
+  Note(
       {this.noteId,
       this.noteTitle,
       this.email,
       this.company,
       this.website,
       this.phoneNumber}) {}
-  factory NotesL.fromJson(Map<String, dynamic> item) {
-    return NotesL(
+  
+  factory Note.fromJson(Map<String, dynamic> item) {
+    return Note(
         noteId: item['id'].toString(),
         noteTitle: item['name'],
         email: item['email'],
