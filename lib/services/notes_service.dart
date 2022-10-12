@@ -8,7 +8,9 @@ import 'package:http/http.dart' as http;
 
 class NotesService {
   static const API = 'https://jsonplaceholder.typicode.com/users';
-  //static const headers = {'apiKey': '2f5cd0b9-8016-42f7-91b6-a9c81fe0e7db'};
+  static const headers = {
+    'Content-type': 'application/json; charset=UTF-8',
+  };
   Future<APIResponse<List<NotesL>>> getNotesList() {
     return http.get(Uri.parse(API)).then((data) {
       if (data.statusCode == 200) {
@@ -50,7 +52,7 @@ class NotesService {
 
   Future<APIResponse<bool>> createNote(NoteInsert item) {
     return http
-        .post(Uri.parse(API), body: jsonEncode(item.toJson()))
+        .post(Uri.parse(API), headers: headers, body: jsonEncode(item.toJson()))
         .then((data) {
       if (data.statusCode == 201) {
         return APIResponse<bool>(data: true);

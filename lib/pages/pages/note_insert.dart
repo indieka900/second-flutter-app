@@ -14,6 +14,6 @@ class NoteInsert {
   }) {}
 
   Map<String, dynamic> toJson() {
-    return {id : 11, 'name': name, 'username': username, 'phone': phone};
+    return {'id': id, 'name': name, 'username': username, 'phone': phone};
   }
 }
