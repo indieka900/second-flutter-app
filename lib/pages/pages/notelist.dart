@@ -64,7 +64,12 @@ class _MylistState extends State<Mylist> {
         builder: (_) {
           if (_isLoading) {
             return Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: Color.fromARGB(200, 52, 248, 3),
+                //value: 2,
+                semanticsLabel: "Loading..",
+                backgroundColor: Color.fromARGB(255, 221, 35, 35),
+              ),
             );
           }
           if (_apiResponse!.error) {
