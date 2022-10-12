@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutterpro/pages/pages/note_insert.dart';
 import 'package:flutterpro/services/notes_service.dart';
@@ -152,7 +150,11 @@ class _NoteModifierState extends State<NoteModifier> {
                                 )
                               ],
                             ),
-                          );
+                          ).then((data) {
+                            if (result.data!) {
+                              Navigator.of(context).pop();
+                            }
+                          });
                         }
                       },
                       child: Text('Submit'),

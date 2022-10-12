@@ -1,19 +1,19 @@
 import 'package:flutter/foundation.dart';
 
 class NoteInsert {
-  //var id;
+  var id;
   var name;
   var username;
   var phone;
 
   NoteInsert({
-    //@required this.id,
+    @required this.id,
     @required this.name,
     @required this.username,
     @required this.phone,
   }) {}
 
   Map<String, dynamic> toJson() {
-    return {'name': name, 'username': username, 'phone': phone};
+    return {id : 11, 'name': name, 'username': username, 'phone': phone};
   }
 }
