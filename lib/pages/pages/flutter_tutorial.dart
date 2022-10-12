@@ -91,7 +91,7 @@ class _ContentState extends State<ContentF> {
                 ),
                 TextButton(
                   onPressed: () {
-                    someLongRunningOperationApi();
+                    someLongRunningOperationAsyncAwait();
                   },
                   child: Text('Future (async/await)'),
                 ),
@@ -189,6 +189,21 @@ class _ContentState extends State<ContentF> {
       });
     }).catchError((onError) {
       print('Error occured');
+    });
+  }
+
+  void someLongRunningOperationAsyncAwait() async {
+    await Future.delayed(Duration(seconds: 3));
+    setState(() {
+      this.result = 'First operation completed';
+    });
+    await Future.delayed(Duration(seconds: 3));
+    setState(() {
+      this.result = 'Second operation completed';
+    });
+    await Future.delayed(Duration(seconds: 3));
+    setState(() {
+      this.result = 'Third operation completed';
     });
   }
 }
