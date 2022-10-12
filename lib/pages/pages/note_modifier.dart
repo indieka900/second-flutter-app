@@ -30,25 +30,27 @@ class _NoteModifierState extends State<NoteModifier> {
 
   @override
   void initState() {
-    setState(() {
-      _isLoading = true;
-    });
-    notesService.getNote(widget.noteid).then((response) {
+    if (isEditting) {
       setState(() {
-        _isLoading = false;
+        _isLoading = true;
       });
-      if (response.error) {
-        errormes = response.errorMessage ?? 'An error occured';
-      }
-      note = response.data;
-      _nameController.text = note!.noteTitle;
-      _streetController.text = note!.adress['street'];
-      _usernameController.text = note!.username;
-      _emailController.text = note!.email;
-      _phoneController.text = note!.phoneNumber;
-      _cityController.text = note!.adress['city'];
-    });
-    super.initState();
+      notesService.getNote(widget.noteid).then((response) {
+        setState(() {
+          _isLoading = false;
+        });
+        if (response.error) {
+          errormes = response.errorMessage ?? 'An error occured';
+        }
+        note = response.data;
+        _nameController.text = note!.noteTitle;
+        _streetController.text = note!.adress['street'];
+        _usernameController.text = note!.username;
+        _emailController.text = note!.email;
+        _phoneController.text = note!.phoneNumber;
+        _cityController.text = note!.adress['city'];
+      });
+      super.initState();
+    }
   }
 
   @override
