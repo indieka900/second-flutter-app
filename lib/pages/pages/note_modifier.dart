@@ -122,12 +122,18 @@ class _NoteModifierState extends State<NoteModifier> {
                         if (isEditting) {
                           //edit
                         } else {
+                          setState(() {
+                            _isLoading = true;
+                          });
                           final note = NoteInsert(
                             name: _nameController,
                             phone: _phoneController,
                             username: _usernameController,
                           );
                           final result = await notesService.createNote(note);
+                          setState(() {
+                            _isLoading = false;
+                          });
                           final title = 'Done';
                           final err = result.error
                               ? (result.errorMessage ?? 'An error occured')

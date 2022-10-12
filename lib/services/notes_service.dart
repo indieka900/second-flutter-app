@@ -49,7 +49,9 @@ class NotesService {
   }
 
   Future<APIResponse<bool>> createNote(NoteInsert item) {
-    return http.post(Uri.parse(API), body: item.toJson()).then((data) {
+    return http
+        .post(Uri.parse(API), body: jsonEncode(item.toJson()))
+        .then((data) {
       if (data.statusCode == 201) {
         return APIResponse<bool>(data: true);
       }
