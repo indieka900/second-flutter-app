@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutterpro/pages/pages/api_response.dart';
 import 'package:flutterpro/pages/pages/note.dart';
+import 'package:flutterpro/pages/pages/note_insert.dart';
 import 'package:flutterpro/pages/pages/pages_for_listing.dart';
 import 'package:http/http.dart' as http;
 
@@ -40,6 +41,22 @@ class NotesService {
           error: true, errorMessage: 'An Error on Occured');
     }).catchError(
       (_) => APIResponse<Note>(
+        error: true,
+        errorMessage:
+            'An error occured\n Make sure you\'re connected to internet',
+      ),
+    );
+  }
+
+  Future<APIResponse<bool>> createNote(NoteInsert item) {
+    return http.post(Uri.parse(API), body: item.toJson()).then((data) {
+      if (data.statusCode == 201) {
+        return APIResponse<bool>(data: true);
+      }
+      return APIResponse<bool>(
+          error: true, errorMessage: 'An Error on Occured');
+    }).catchError(
+      (_) => APIResponse<bool>(
         error: true,
         errorMessage:
             'An error occured\n Make sure you\'re connected to internet',

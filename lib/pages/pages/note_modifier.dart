@@ -1,4 +1,7 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:flutterpro/pages/pages/note_insert.dart';
 import 'package:flutterpro/services/notes_service.dart';
 import 'package:get_it/get_it.dart';
 
@@ -115,8 +118,36 @@ class _NoteModifierState extends State<NoteModifier> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
+                      onPressed: () async {
+                        if (isEditting) {
+                          //edit
+                        } else {
+                          final note = NoteInsert(
+                            name: _nameController,
+                            phone: _phoneController,
+                            username: _usernameController,
+                          );
+                          final result = await notesService.createNote(note);
+                          final title = 'Done';
+                          final err = result.error
+                              ? (result.errorMessage ?? 'An error occured')
+                              : 'Done Succesfully';
+                          showDialog(
+                            context: context,
+                            builder: (_) => AlertDialog(
+                              title: Text(title),
+                              content: Text(err),
+                              actions: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text('Ok'),
+                                )
+                              ],
+                            ),
+                          );
+                        }
                       },
                       child: Text('Submit'),
                     ),
